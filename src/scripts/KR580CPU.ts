@@ -1,0 +1,3 @@
+class KR580CPU {
+    
+}
