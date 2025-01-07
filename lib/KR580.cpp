@@ -62,7 +62,7 @@ void KR580VM80A::setFlags(uint8_t value) {
 }
 
 void KR580VM80A::setFlagAC(uint8_t value_1, uint8_t value_2) {
-	flag.AC = (value_1 & 0xF0) != (value_1 & 0xF0);
+	flag.AC = (value_1 & 0xF0) != (value_2 & 0xF0);
 }
 
 
@@ -440,7 +440,7 @@ void KR580VM80A::execute(uint8_t opcode) {
 	case DI:
 	case EI:
 	case HLT:
-		// TODO: —ƒ≈À¿… ›“Œ
+		// TODO: √ë√Ñ√Ö√ã√Ä√â √ù√í√é
 		break;
 	case IN: {
 		std::queue<uint8_t> port = in[getByte()];
