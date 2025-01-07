@@ -1,3 +1,5 @@
+import { getPair } from "./tools";
+
 export {Register, RegisterPair};
 
 /*
@@ -10,7 +12,18 @@ BC.high // первые 8 бит (регистр B)
 BC.low // последние 8 бит (регистр C)
 */
 
-class Register {
+interface IRegister {
+    value: number;
+}
+
+interface IRegisterPair {
+    low: number;
+    high: number;
+    value: number;
+}
+
+
+class Register implements IRegister {
     private register: number = 0;
 
     get value(): number {
@@ -23,7 +36,7 @@ class Register {
 }
 
 
-class RegisterPair {
+class RegisterPair implements IRegisterPair {
     private _low: number;
     private _high: number;
 
@@ -49,7 +62,7 @@ class RegisterPair {
     }
 
     get value(): number {
-        return (this._high << 8) | this._low;
+        return getPair(this._high, this._low);
     }
 
     set value(val: number) {
